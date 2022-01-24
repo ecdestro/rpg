@@ -1,16 +1,17 @@
 #include <iostream>
 #include <string>
+#include <unistd.h>
 
-class Character {
+class Actor {
 public:
-	Character(std::string handle = "", int HP = 0, int dmg = 0) {
+	Actor(std::string handle = "", int HP = 0, int dmg = 0) {
 		setName(handle);
 		setHP(HP);
 		setDamage(dmg);
-		//std::cout << "Character " << getName() << " created with " << getHP();
+		//std::cout << "Actor " << getName() << " created with " << getHP();
 		//std::cout << " and " << getDamage() << " attack." << std::endl;
 	}
-	~Character() {}
+	~Actor() {}
 
 	void setHP(int HP) {
 		hitPoints = HP;
@@ -48,28 +49,29 @@ private:
 	std::string name;
 };
 
-Character combat(Character char1, Character char2) {
+Actor combat(Actor char1, Actor char2) {
 	std::cout << "Attack!" << std::endl;
-	Character victor;
+	Actor victor;
 	int round = 1;
 	int hitChance = 0;
 	while ((char1.getHP() > 0) && (char2.getHP() > 0)) {
+		sleep(rand() % 3);
 		std::cout << "Round " << round << " FIGHT!" << std::endl;
-		hitChance = rand() % 2;
+		hitChance = rand() % 3;
 		std::cout << "Hit chance player1 = " << hitChance << std::endl;
 		if (hitChance != 0) {
 			std::cout << "HIT!\n"; 
-			char1.setHP(char1.getHP() - char2.getDamage());
+			char1.setHP(char1.getHP() - rand() % char2.getDamage());
 		}
 		else {
 			std::cout << "Miss!\n";
 		}
 
-		hitChance = rand() % 2;
+		hitChance = rand() % 3;
 		std::cout << "Hit chance player2 = " << hitChance << std::endl;
 		if (hitChance != 0) {
 			std::cout << "HIT!\n";
-			char2.setHP(char2.getHP() - char1.getDamage());
+			char2.setHP(char2.getHP() - rand() % char1.getDamage());
 		}
 		else {
 			std::cout << "Miss!\n";
@@ -90,9 +92,9 @@ Character combat(Character char1, Character char2) {
 }
 
 int main() {
-	Character player1("player1",30,3);
-	Character player2("player2",30,3);
-	Character victor;
+	Actor player1("player1",30,5);
+	Actor player2("player2",30,5);
+	Actor victor;
 
 	victor = combat(player1, player2);
 	std::cout << "Winner!\n";
