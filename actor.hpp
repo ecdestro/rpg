@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 
-#ifndef __ACTOR_H_INCLUDED__
-#define __ACTOR_H_INCLUDED__
+#ifndef __ACTOR_HPP_INCLUDED__
+#define __ACTOR_HPP_INCLUDED__
 
 class Actor {
 public:
