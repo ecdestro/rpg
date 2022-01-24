@@ -1,5 +1,5 @@
-#include "actor.h"
-#include "combat.h"
+#include "actor.hpp"
+#include "combat.hpp"
 
 int main() {
 	//Actor object("name",HP,DMG,Init);
