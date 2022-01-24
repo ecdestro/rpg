@@ -3,7 +3,7 @@
 
 class Character {
 public:
-	Character(std::string handle, int HP, int dmg) {
+	Character(std::string handle = "", int HP = 0, int dmg = 0) {
 		setName(handle);
 		setHP(HP);
 		setDamage(dmg);
@@ -27,7 +27,7 @@ public:
 	int getDamage() {
 		return damage;
 	}
-	
+
 	void setName(std::string handle) {
 		name = handle;
 	}
@@ -50,31 +50,50 @@ private:
 
 Character combat(Character char1, Character char2) {
 	std::cout << "Attack!" << std::endl;
-	Character victor("winner",0,0);
+	Character victor;
 	int round = 1;
-	while ((char1.getHP() >= 0) && (char2.getHP() >= 0)) {
+	int hitChance = 0;
+	while ((char1.getHP() > 0) && (char2.getHP() > 0)) {
 		std::cout << "Round " << round << " FIGHT!" << std::endl;
-		char1.setHP(char1.getHP() - char2.getDamage());
-		char2.setHP(char2.getHP() - char1.getDamage());
+		hitChance = rand() % 2;
+		std::cout << "Hit chance player1 = " << hitChance << std::endl;
+		if (hitChance != 0) {
+			std::cout << "HIT!\n"; 
+			char1.setHP(char1.getHP() - char2.getDamage());
+		}
+		else {
+			std::cout << "Miss!\n";
+		}
+
+		hitChance = rand() % 2;
+		std::cout << "Hit chance player2 = " << hitChance << std::endl;
+		if (hitChance != 0) {
+			std::cout << "HIT!\n";
+			char2.setHP(char2.getHP() - char1.getDamage());
+		}
+		else {
+			std::cout << "Miss!\n";
+		}
+
 		char1.print();
 		char2.print();
 		round++;
 	}
-	if (char1.getHP() >= 0) {
+	if (char1.getHP() > 0) {
 		victor = char1;
 	}
-	else if (char2.getHP() >= 0) {
+	else if (char2.getHP() > 0) {
 		victor = char2;
 	}
 
 	return victor;
-}	
+}
 
 int main() {
-	Character player1("player1",25,15);
-	Character player2("player2",45,5);
-	Character victor("winner",0,0);
-	
+	Character player1("player1",30,3);
+	Character player2("player2",30,3);
+	Character victor;
+
 	victor = combat(player1, player2);
 	std::cout << "Winner!\n";
 	victor.print();
