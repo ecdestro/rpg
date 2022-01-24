@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include <unistd.h>
 
 class Actor {
@@ -55,6 +56,7 @@ Actor combat(Actor char1, Actor char2) {
 	int round = 1;
 	int hitChance = 0;
 	while ((char1.getHP() > 0) && (char2.getHP() > 0)) {
+		srand(time(0));
 		sleep(rand() % 3);
 		std::cout << "Round " << round << " FIGHT!" << std::endl;
 		hitChance = rand() % 3;
