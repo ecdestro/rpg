@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <unistd.h>
-#include "combat.h"
+#include "combat.hpp"
 
 Actor combat(Actor char1, Actor char2) {
 	std::cout << "Attack!" << std::endl;
