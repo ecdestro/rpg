@@ -1,7 +1,7 @@
 #include "actor.hpp"
 
-#ifndef __COMBAT_H_INCLUDED__
-#define __COMBAT_H_INCLUDED__
+#ifndef __COMBAT_HPP_INCLUDED__
+#define __COMBAT_HPP_INCLUDED__
 
 Actor combat(Actor char1, Actor char2);
 
