@@ -1,6 +1,7 @@
 #include "menu.hpp"
 #include "demo.hpp"
 #include "play.hpp"
+#include "fileLoadSave.hpp"
 
 int mainMenu() {
     char option;
@@ -8,17 +9,17 @@ int mainMenu() {
     std::cout << "RPG v0.0.1" << std::endl << std::endl;
     std::cout << "Please choose an option:\n";
     std::cout << "\tA - Play the Demo\n";
-    std::cout << "\tB - Generate a character\n";
+    std::cout << "\tB - Load and Save\n";
     std::cout << "\tC - Quit\n";
     std::cin >> option;
     
-    if (option == 'A') {
+    if (option == 'A' || option == 'a') {
         demo();
     }
-    else if (option == 'B') {
-        run();
+    else if (option == 'B' || option == 'b') {
+        fileLoadSave();
     }
-    else if (option == 'C') {
+    else if (option == 'C' || option == 'c') {
         return 0;
     }
 
