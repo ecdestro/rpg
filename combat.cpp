@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <unistd.h>
+#include <time.h>
 #include "combat.hpp"
 
 Actor combat(Actor char1, Actor char2) {
