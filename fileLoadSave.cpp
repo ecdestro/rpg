@@ -1,15 +1,23 @@
 #include <fstream>
+#include <filesystem>
 #include "actor.hpp"
 #include "menu.hpp"
 
+void listFiles() {
+    std::string path = "players";
+    for (const auto & entry : std::filesystem::directory_iterator(path))
+        std::cout << entry.path() << std::endl;
+}
+
 Actor loadPlayer() {
+    listFiles();
     Actor player;
     std::string read = "";
     std::string fName = "";
     std::cout << "Enter a player name\n";
     std::cin >> fName;
 
-    std::ifstream fileIn(fName);
+    std::ifstream fileIn("players/" + fName);
     if (fileIn.fail()) {
         std::cout << "Error opening player file\n";
         return player;
