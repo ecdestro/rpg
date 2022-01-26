@@ -2,6 +2,7 @@
 #include <filesystem>
 #include "actor.hpp"
 #include "menu.hpp"
+#include "create.hpp"
 
 void listFiles() {
     std::string path = "players";
@@ -37,49 +38,40 @@ Actor loadPlayer() {
             player.setInit(std::stoi(read));
         }
     }
-
     fileIn.close();
-
     player.print();
-    
     return player;
 }
 
 void savePlayer(Actor player) {
-    std::string fName = "";
-    std::cout << "Name your character\n";
-    std::cin >> fName;
-    std::ofstream fileOut(fName);
-
-    player.setName(fName);
-    player.setHP(30);
-    player.setDamage(5);
-    player.setInit(6);
+    std::ofstream fileOut("players/" + player.getName());
     fileOut << player.getName() << " ";
     fileOut << player.getHP() << " ";
     fileOut << player.getDamage() << " ";
-    fileOut << player.getInit() << " ";
+    fileOut << player.getInit();
     fileOut.close();
-
     std::cout << "Character saved!\n";
 }
 
-int fileLoadSave() {
-    Actor player;
+Actor fileLoadSave() {
     char choice;
-    std::cout << "Load or Create character?\n";
+    Actor player;
+    std::cout << "Load or Save character?\n";
     std::cout << "\tA - Load\n";
-    std::cout << "\tB - Create\n";
+    std::cout << "\tB - Save\n";
+    std::cout << "\tC - Back\n";
     std::cin >> choice;
 
     if (choice == 'A' || choice == 'a') {
         player = loadPlayer();
-        mainMenu();
+        return player;
     }
     else if (choice == 'B' || choice == 'b') {
         savePlayer(player);
-        mainMenu();
+        return player;
     }
-
-    return 0;
+    else if (choice == 'C' || choice == 'c') {
+        return player;
+    }
+    return player;
 }

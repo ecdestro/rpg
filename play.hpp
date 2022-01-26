@@ -3,6 +3,6 @@
 #ifndef __PLAY_HPP_INCLUDED__
 #define __PLAY_HPP_INCLUDED__
 
-int run();
+int encounter(Actor player);
 
 #endif

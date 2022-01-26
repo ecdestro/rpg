@@ -4,6 +4,6 @@
 void listFiles();
 Actor loadPlayer();
 void savePlayer(Actor player);
-int fileLoadSave();
+Actor fileLoadSave();
 
 #endif
