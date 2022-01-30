@@ -15,8 +15,8 @@ Actor createCharacter() {
     while (choice == 'Y' || choice == 'y') {
         player.setName(fName);
         player.setHP(30 + (rand() % 15));
-        player.setDamage(3 + (rand() % 7));
-        player.setInit(4 + (rand() % 6));
+        player.setDamage(5 + (rand() % 5));
+        player.setInit(5 + (rand() % 5));
         player.print();
         std::cout << "\nRefresh this character? Y/N\n";
         std::cin >> choice;

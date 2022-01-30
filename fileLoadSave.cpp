@@ -55,26 +55,3 @@ Actor savePlayer(Actor player) {
 
     return player;
 }
-
-// Actor fileLoadSave() {
-//     char choice = 'C';
-//     Actor player;
-
-//     std::cout << "Load or Save character?\n";
-//     std::cout << "\tA - Load\n";
-//     std::cout << "\tB - Save\n";
-//     std::cout << "\tC - Back\n";
-//     std::cin >> choice;
-
-//     if (choice == 'A' || choice == 'a') {
-//         player = loadPlayer();
-//     }
-//     else if (choice == 'B' || choice == 'b') {
-//         savePlayer(player);
-//     }
-//     else {
-//         return player;
-//     }
-
-//     return player;
-// }

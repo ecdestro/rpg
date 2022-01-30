@@ -1,11 +1,14 @@
 #include <string>
+#include <cstdlib>
+#include <time.h>
 #include "play.hpp"
 #include "actor.hpp"
 #include "combat.hpp"
 #include "fileLoadSave.hpp"
 
 Actor encounter(Actor player) {
-    Actor opponent("Enemy",30,5,5);
+    srand(time(0));
+    Actor opponent("Enemy",15 + (rand() % 15), 5 + (rand() % 5), 5 + (rand() % 5));
     Actor victor;
     if (player.getHP() == 0) {
         //player = loadPlayer();
@@ -17,5 +20,15 @@ Actor encounter(Actor player) {
 
     std::cout << "Winner! " << victor.getName() << std::endl;
 
-    return player;
+    if (victor.getName() == player.getName()) {
+        victor.setName(player.getName());
+        victor.setHP(victor.getHP());
+        victor.setDamage(player.getDamage());
+        victor.setInit(player.getInit());
+        return victor;
+    }
+    else {
+        player.setHP(1);
+        return player;
+    }
 }

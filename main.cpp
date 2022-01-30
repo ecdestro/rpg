@@ -9,7 +9,7 @@ int main() {
 	Actor player("",5,1,1);
 
     while (option != 'E' && option != 'e') {
-		std::cout << "\nRPG v0.0.2" << std::endl;
+		std::cout << "\nRPG v0.0.3" << std::endl;
 		std::cout << "Current character: " << std::endl;
 		player.print();
 		std::cout << std::endl << std::endl;
@@ -18,7 +18,7 @@ int main() {
 		std::cout << "\tA - Play\n";
 		std::cout << "\tB - Load\n";
 		std::cout << "\tC - Save\n";
-		std::cout << "\tD - Create Character\n";
+		std::cout << "\tD - New\n";
 		std::cout << "\tE - Quit\n";
 		std::cin >> option;
 
