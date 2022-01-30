@@ -1,18 +1,28 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <time.h>
 #include "actor.hpp"
 
 Actor createCharacter() {
     Actor player;
+    srand(time(0));
+    char choice = 'Y';
     std::string fName = "";
     std::cout << "Name your character\n";
     std::cin >> fName;
+    
+    while (choice == 'Y' || choice == 'y') {
+        player.setName(fName);
+        player.setHP(30 + (rand() % 15));
+        player.setDamage(3 + (rand() % 7));
+        player.setInit(4 + (rand() % 6));
+        player.print();
+        std::cout << "\nRefresh this character? Y/N\n";
+        std::cin >> choice;
+    }
+    
     std::ofstream fileOut("players/" + fName);
-
-    player.setName(fName);
-    player.setHP(30);
-    player.setDamage(5);
-    player.setInit(6);
     fileOut << player.getName() << " ";
     fileOut << player.getHP() << " ";
     fileOut << player.getDamage() << " ";

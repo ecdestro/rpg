@@ -3,7 +3,7 @@
 
 void listFiles();
 Actor loadPlayer();
-void savePlayer(Actor player);
-Actor fileLoadSave();
+Actor savePlayer(Actor player);
+//Actor fileLoadSave();
 
 #endif
