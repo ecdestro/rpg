@@ -1,4 +1,5 @@
 #include <iostream>
+#include <Windows.h>
 #include <fstream>
 #include <cstdlib>
 #include <time.h>
@@ -22,11 +23,14 @@ Actor createCharacter() {
         std::cin >> choice;
     }
     
-    std::ofstream fileOut("players/" + fName);
-    fileOut << player.getName() << " ";
-    fileOut << player.getHP() << " ";
-    fileOut << player.getDamage() << " ";
-    fileOut << player.getInit() << " ";
-    fileOut.close();
+    if (CreateDirectory("players", NULL) ||
+    ERROR_ALREADY_EXISTS == GetLastError()) {
+        std::ofstream fileOut("players/" + fName);
+        fileOut << player.getName() << " ";
+        fileOut << player.getHP() << " ";
+        fileOut << player.getDamage() << " ";
+        fileOut << player.getInit();
+        fileOut.close();
+    }
     return player;
 }
