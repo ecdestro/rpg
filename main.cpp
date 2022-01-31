@@ -1,3 +1,4 @@
+#include <filesystem>
 #include "actor.hpp"
 #include "combat.hpp"
 #include "fileLoadSave.hpp"
@@ -6,7 +7,7 @@
 
 int main() {
     char option;
-	Actor player("",5,1,1);
+	Actor player("None",0,0,0);
 
     while (option != 'E' && option != 'e') {
 		std::cout << "\nRPG v0.0.3" << std::endl;
@@ -23,10 +24,10 @@ int main() {
 		std::cin >> option;
 
         if (option == 'A' || option == 'a') {
-            if (player.getName() == "") {
-				player = loadPlayer();
+            if (!std::filesystem::exists("players")) {
+				player = createCharacter();
 			}
-            else {
+			else {
 				player = encounter(player);
 			}
         }
