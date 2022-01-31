@@ -10,15 +10,14 @@ Actor encounter(Actor player) {
     srand(time(0));
     Actor opponent("Enemy",15 + (rand() % 15), 5 + (rand() % 5), 5 + (rand() % 5));
     Actor victor;
-    if (player.getHP() == 0) {
-        //player = loadPlayer();
-        player.print();
+    if (player.getName() == "") {
+        std::cout << "You haven't loaded a character.\n";
+        player = loadPlayer();
     }
     else {
         victor = combat(player, opponent);
+        std::cout << "Winner! " << victor.getName() << std::endl;
     }    
-
-    std::cout << "Winner! " << victor.getName() << std::endl;
 
     if (victor.getName() == player.getName()) {
         victor.setName(player.getName());
@@ -28,7 +27,6 @@ Actor encounter(Actor player) {
         return victor;
     }
     else {
-        player.setHP(1);
         return player;
     }
 }
