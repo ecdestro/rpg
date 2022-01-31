@@ -35,7 +35,6 @@ Actor combat(Actor char1, Actor char2) {
 	std::cout << " versus " << initBot.getName() << " " << initBot.getInit() << ")" << std::endl;
 	// Start the encounter loop
 	while ((initTop.getHP() > 0) && (initBot.getHP() > 0)) {
-		sleep(1);
 		std::cout << "Round " << round << " FIGHT!" << std::endl;
 		hitChance = rand() % 2;
 		std::cout << "Hit chance " << initTop.getName() << " = " << hitChance << std::endl;
